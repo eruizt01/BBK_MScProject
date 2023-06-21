@@ -1,122 +1,226 @@
 # BBK_MScProject
-A Graph-Based Database Application for Cartel Investigations
 
-This document contains the description of what the dummy database should contain.
+A Graph-Based Database Application for Cartel Investigations
+This document contains a description of what the dummy database should contain, and several information about nodes, properties and relationships.
 
 ## * The Case *
 
-The database is loosely based on the price-fixing case involving online sellers that sold their products through Amazon's UK website. The cartelists used a pricing software not to undercut each others prices.
+The database is loosely based on a price-fixing case involving online sellers that offered their products through Amazon's UK website. The cartelists agreed to use a pricing software with the object to avoid undercutting each others prices.
 
 CMA's notes on the case:
 https://www.gov.uk/government/case-studies/online-sellers-price-fixing-case-study . 
 
 As I happen to be an amateur boxing aficionado, this fictional case will involve boxing accessories.
 
-
 ## Nodes
 
- -Firm: 
+ i) Firm: 
  
-	 The DB will have 3 fictional firms.
+	 The DB will have 3 fictional firms (Labels)
 	 1. PunchGear Co.
 	 2. K.O. Inc.
 	 3. TysonJab Ltd.
 
--Person:
+ii) Person:
 
-	Every person that might be relevant to the conduct.
+	Every person that might be relevant to the conduct, such as business executives at different levels of hierarchy, labelled as "CEO", "Sales VP", "Zone Manager", "Sales Agent". For simplicity, we will assume all three firms follow the same organisational structure.
 
--EmailAccount
+iv) Social Media Accounts (SMA)
 
-	- We will assume every person has at least one email account.
+	Given that a specific user can use plenty of SMAs, I will represent them as individual nodes, whereas email and phone numbers will be recorded as properties or Person.  
 
--SocialMediaAccount
+iii) Email
 
-	- We will assume every person has at least one SMA.
+	This node will group email communications.
 
--Communication
+	 For this prototype, I have decided to represent every single Email, Message and Call as an individual node, to offer more granularity to the database. This will allow teams to assign a "weight" to individual messages, which will be useful when working with algorithms.
 
-		- Both intra-firm or extra-firm
+iv) Message
 
--Product
+	-This will group all messages on apps that allow private, one-to-one or group messaging or calling, usually offering some level of encryption (Whatsapp, Telegram, Signal).
+
+v) Call
+
+	 -This node will gather information on individual or group calls made through the telephone line or through any platform or app.
+	 We will assume that the agency has access to information on the existence of the calls sent/received by the relevant subjects, but not on the content (no phone tapping). This is the common case as new technologies makes easy access to voice call encryption.
+
+vi) GroupChat
+
+	- The widespread use of group messaging dynamics is especially relevant in the context of finding evidence of a cartel. This node will record the group of group-chat messaging (participants / content). 
+
+vi) Meeting:
+
+	-Node that represent information about in/person meetings with 2 or more individuals participating, either from the same organization (intra-company) or belonging to competing firms.
+
+
+vi) Product
 
 	- The following are the products for sale:
 		- Boxing gloves
 		- Hand wraps
-		- Skipping rope
-		- Punching bag
-		- Mouth Guard
+		- Skipping ropes
+		- Punching bags
+		- Mouth Guards
 	
-		We will assume every firm sells every product, with the exception of TysonJab Ltd., that only sells boxing gloves, hand wraps and punching bags.
 
-Brand:
-
-		- Every firm owns different Brands, and each product may be branded differently by individual firms.
-		1. PunchGear Co.
-		   a)  "PowerPunch (c)", and labels as such the Boxing Gloves, Hand wraps and the punching bags.
-		   b)  "PowerBite" is the brand of the mouth guards.
-		   c)  "PowerRope" is the brand of the skipping ropes.
-		2. K.O. Inc.
-		   a)  "K.O.", and labels as such the Boxing Gloves, Hand wraps and the punching bags.
-		   b)  "K.O. GumSecure" is the brand of the mouth guards.
-		   c) "K.O. Jumper" is the brand of the skipping ropes.
-		 3. TysonJab:
-				  All boxing gloves, hand wraps and punching bags are sold under the brand "TysonJab".
+		 This node is relevant to oour schema because we want to register individual sales, and find correlations between potential price fluctuations and communications between executives.
+		 
+		 * We will assume every firm sells every product, with the exception of TysonJab Ltd., that only sells boxing gloves, hand wraps and punching bags. We assume firms sell their own products only, which will be represented as distinct SKUs.
 		
 		
-Sales
-		- Every firm owns different Brands, and each product may be branded differently by individual firms. 
+
 
 ## Properties
 
-### Firm
+###  i) Firm
 	- Name
-	- Brands
 	
 
-### Person
+### ii) Person
 	- Name
 	- Surname
 	- Age
 	- Role
+	- email_account
+	- phone_number
 
-*Roles*:  The hierarchy of the roles will be defined by an array . For example:
 
-role: ['CEO', 'VP Sales', 'Senior Sales Manager', 'SalesExecutive'] will represent a Sales Executive, with all the hierarchy
+### iii) Social Media Account (SMA)
+	- Platform
+	- Username
+	- date_created
+	- last_activity
 
-### Email Account
-	- Name
-	- Surname
-	- Age
-	- Role
 
-## Brand
-	- Name
+### iii) Email
+	- date
+	- time
+	- sender_address
+	- receiver_address
+	- Weight *
+	- Flag ** ("meetings", "pricing", "agreement", "other")
+	- link to content ***
 
-### Product
-	- Name
-	- Category
+	 * Investigative teams will be allowed to assign weight to individual messages based on  their importance to the case (evidentiary value), from 1 to 10, being 10 the most valuable.
+	 
+	** Additionaly, a "flag" can be added to give access to a brief description of the content of an email or message. Investigative teams may define several flags. For this database we will use four simple flags.
+	
+	*** Each node corresponding to an email or a message will showcase links to the message or email in plain text. I only will add links to some of them on the dummy database to exemplify the functionality. 
 
-### Sales
-	- Date
-	- Hour
-	- Price
-	- Quantity
+
+### iv) Call
+	- medium ("phone line, whatsapp, skype)
+	- date
+	- time
+	- duration
+
+
+### v) GroupChat
+	- name
+	- platform
+	- date_created
+
+### vi) Message
+
+	- platform (whatsapp, Telegram, Signal, Other).
+	- date
+	- time
+	- format (text, image, audio, other)
+	- Weight
+	- Flag
+	- link to content
+	 
+
+### vii) Meeting
+	- date
+	- time
+	- category (in person/virtual)
+	- location (if applicable)
+	- platform (if applicable)
+	- Weight
+
+	
+### viii) Product
+	- product name
+	- SKU (unique 7-digit random number per product)
+	- Category: [Boxing gloves, Hand wraps, Skipping ropes, Punching bags, Mouth Guards]
+
+
 
 ## Relationships
 
-Person --[Person-Firm]--> Firm : Represent affiliation or employment
-Person --[Person-EmailAccount]--> EmailAccount  : Links a person with their email account.
-Person --[Person-SocialMediaAccount]--> SocialMediaAccount : Links a person with their email account.
-Firm --[Firm-Product]--> Product: Represets a firm that distributes or manufactures a given product.
-Firm --[Firm-Brand]--> Product: Represets a firm that owns a Brand.
-Product --[Product-Brand]--> Links a product with its brand. 
-Product--[Product-Sale]--> Sale 
-Firm --[Firm-Sale]--> Sale: Links a Firm with an individual sale.
+a) Person -- [:WORKS]--> Firm : Represent affiliation or employment
+
+
+		- PROPERTIES of the relation:
+			i) since: Date employment or affiliation.
+			ii) role 
+			
+
+b) Person -- [:MANAGES]--> Person : Represents hierarchy between two persons inside an organisation.
+
+
+c) Person--[: HAS_ACCOUNT]-->SMA  : Links a person with their social media account (SMA).
+
+d) SMA--[: FOLLOWS]-->SMA  : Links a SMA that follows (or 'is friends' with another).It can be bidirectional.
+
+
+e) SMA--[: INTERACTED]-->SMA  : Links an action taken on a social media account (SMA) with another.
+
+	- PROPERTIES of the relation:
+			i) date
+			ii) category: ("like", "retweet").
+
+		* Note: Direct Messages (DMs) or comments will be considered "Messages" and not included in this category.	
+
+f) SMA --[: SENT_DM]--> Message  : Represents a direct message sent  by a person using a SMA.
+
+
+g) SMA --[: RECEIVED_DM]--> Message  : Represents a  direct message received by a SMA.
+
+
+h) Email --[: SENT_EMAIL]--> Email  : Represents an electronic mail sent from one email account to another.
+
+		* Note: We only link the email accounts as SENDER/RECEIVER, not a person with an email. email_address is a property of Person, and one person usually uses one or two email addresses, as opposed to social media accounts (that could be plenty). Hence I consider that adding another relation could needlessly complicate the analysis.
+		
+
+i) Email --[: RECEIVED_EMAIL]--> Email  : Represents an electronic mail received from one account from another.
+
+j) Person --[: PARTICIPATED_IN]--> GroupChat  : Links a person with a groupChat.
+
+
+k) Person --[: SENT_MSG]--> Message  : Represents a message sent by a Person (througn Whatsapp, Signal, Telegram or other non-SMA platforms).
+
+
+l) Person --[: RECEIVED_MSG]--> Message  : Represents a  message received by a Person (througn Whatsapp, Signal, Telegram or other non-SMA platforms)..
+	 
+m) Message --[: IN]--> GroupChat  : Links a message to a GroupChat
+
+
+n) Person)-[:MADE_CALL]->Call: Links a person with a specific voice call.
+
+
+o) Person)-[:RECEIVED_CALL]->Call: Person that received a voice call.
+
+
+p) Person-[:ATTENDED]-> Meeting : Links a person with a meeting.
+
+q) Firm --[:SOLD]--> Product: Represets a firm that sold a specific product. 
+As the investigation relates to sales made through Amazon, we will assume all sales incorporated in this DB were made through that specific platform.
+ 
+	  - PROPERTIES of the relation:
+			i) date sold
+			ii) timestamp
+			iii) quantity
+			iv) price per unit (PPU), in £.
+			
+			
+			
 
 
 
-## Labels
+
+
 
 
 
