@@ -1,0 +1,1493 @@
+﻿[
+  {
+    "n": {
+      "identity": 3,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "CEO",
+        "email_account": "c.monzon@punchgear.com",
+        "surname": "Monzon",
+        "name": "Charlie",
+        "phone_number": "07337794873",
+        "age": 27
+      },
+      "elementId": "3"
+    },
+    "r": {
+      "identity": 0,
+      "start": 3,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "0",
+      "startNodeElementId": "3",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "PunchGear Co."
+      },
+      "elementId": "0"
+    },
+    "r": {
+      "identity": 0,
+      "start": 3,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "0",
+      "startNodeElementId": "3",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 6,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "v.dalston@punchgear.com",
+        "surname": "Dalston",
+        "name": "Veronica",
+        "phone_number": "07475826107",
+        "age": 53
+      },
+      "elementId": "6"
+    },
+    "r": {
+      "identity": 1,
+      "start": 6,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "1",
+      "startNodeElementId": "6",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "PunchGear Co."
+      },
+      "elementId": "0"
+    },
+    "r": {
+      "identity": 1,
+      "start": 6,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "1",
+      "startNodeElementId": "6",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "k.chong@punchgear.com",
+        "surname": "Chong",
+        "name": "Kim",
+        "phone_number": "07765243981",
+        "age": 28
+      },
+      "elementId": "7"
+    },
+    "r": {
+      "identity": 2,
+      "start": 7,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "2",
+      "startNodeElementId": "7",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "PunchGear Co."
+      },
+      "elementId": "0"
+    },
+    "r": {
+      "identity": 2,
+      "start": 7,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "2",
+      "startNodeElementId": "7",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 8,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "lbax@punchgear.com",
+        "surname": "Bax",
+        "name": "Lucas",
+        "phone_number": "07765243981",
+        "age": 22
+      },
+      "elementId": "8"
+    },
+    "r": {
+      "identity": 3,
+      "start": 8,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "3",
+      "startNodeElementId": "8",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "PunchGear Co."
+      },
+      "elementId": "0"
+    },
+    "r": {
+      "identity": 3,
+      "start": 8,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "3",
+      "startNodeElementId": "8",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 9,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "clight@punchgear.com",
+        "surname": "Light",
+        "name": "Christian",
+        "phone_number": "07841509627",
+        "age": 42
+      },
+      "elementId": "9"
+    },
+    "r": {
+      "identity": 4,
+      "start": 9,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "4",
+      "startNodeElementId": "9",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "PunchGear Co."
+      },
+      "elementId": "0"
+    },
+    "r": {
+      "identity": 4,
+      "start": 9,
+      "end": 0,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "4",
+      "startNodeElementId": "9",
+      "endNodeElementId": "0"
+    }
+  },
+  {
+    "n": {
+      "identity": 10,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "r.martino@tjab.com",
+        "surname": "Martino",
+        "name": "Ricky",
+        "phone_number": "07065498216",
+        "age": 67
+      },
+      "elementId": "10"
+    },
+    "r": {
+      "identity": 5,
+      "start": 10,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "5",
+      "startNodeElementId": "10",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "TysonJab Ltd."
+      },
+      "elementId": "2"
+    },
+    "r": {
+      "identity": 5,
+      "start": 10,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "5",
+      "startNodeElementId": "10",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "l.levy@tjab.com",
+        "surname": "Levy",
+        "name": "Lena",
+        "phone_number": "07682103459",
+        "age": 54
+      },
+      "elementId": "11"
+    },
+    "r": {
+      "identity": 6,
+      "start": 11,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "6",
+      "startNodeElementId": "11",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "TysonJab Ltd."
+      },
+      "elementId": "2"
+    },
+    "r": {
+      "identity": 6,
+      "start": 11,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "6",
+      "startNodeElementId": "11",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 12,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "g.foreguy@tjab.com",
+        "surname": "Foreguy",
+        "name": "Georgie",
+        "phone_number": "07263948105",
+        "age": 34
+      },
+      "elementId": "12"
+    },
+    "r": {
+      "identity": 7,
+      "start": 12,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "7",
+      "startNodeElementId": "12",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "TysonJab Ltd."
+      },
+      "elementId": "2"
+    },
+    "r": {
+      "identity": 7,
+      "start": 12,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "7",
+      "startNodeElementId": "12",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 13,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "f.juneclimatey@tjab.com",
+        "surname": "Juneclimate",
+        "name": "Floyd",
+        "phone_number": "07921587064",
+        "age": 28
+      },
+      "elementId": "13"
+    },
+    "r": {
+      "identity": 8,
+      "start": 13,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "8",
+      "startNodeElementId": "13",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "TysonJab Ltd."
+      },
+      "elementId": "2"
+    },
+    "r": {
+      "identity": 8,
+      "start": 13,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "8",
+      "startNodeElementId": "13",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 5,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "CEO",
+        "email_account": " t.josher@ko.com",
+        "surname": "Josher",
+        "name": "Tony",
+        "phone_number": "07410928574",
+        "age": 32
+      },
+      "elementId": "5"
+    },
+    "r": {
+      "identity": 9,
+      "start": 5,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "9",
+      "startNodeElementId": "5",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "K.O. Inc."
+      },
+      "elementId": "1"
+    },
+    "r": {
+      "identity": 9,
+      "start": 5,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "9",
+      "startNodeElementId": "5",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "a.reed@ko.com",
+        "surname": "Reed",
+        "name": "Apollo",
+        "phone_number": "07620418975",
+        "age": 44
+      },
+      "elementId": "14"
+    },
+    "r": {
+      "identity": 10,
+      "start": 14,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "10",
+      "startNodeElementId": "14",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "K.O. Inc."
+      },
+      "elementId": "1"
+    },
+    "r": {
+      "identity": 10,
+      "start": 14,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "10",
+      "startNodeElementId": "14",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "i.drako@ko.com",
+        "surname": "Drako",
+        "name": "Ivana",
+        "phone_number": "07093657142",
+        "age": 32
+      },
+      "elementId": "15"
+    },
+    "r": {
+      "identity": 11,
+      "start": 15,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "11",
+      "startNodeElementId": "15",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "K.O. Inc."
+      },
+      "elementId": "1"
+    },
+    "r": {
+      "identity": 11,
+      "start": 15,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "11",
+      "startNodeElementId": "15",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 16,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "c.alves@ko.com",
+        "surname": "Alves",
+        "name": "Canela",
+        "phone_number": "07153829476",
+        "age": 29
+      },
+      "elementId": "16"
+    },
+    "r": {
+      "identity": 12,
+      "start": 16,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "12",
+      "startNodeElementId": "16",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "K.O. Inc."
+      },
+      "elementId": "1"
+    },
+    "r": {
+      "identity": 12,
+      "start": 16,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "12",
+      "startNodeElementId": "16",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 17,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "r.balbota@ko.com",
+        "surname": "Balbota",
+        "name": "Ronnie",
+        "phone_number": "07684290375",
+        "age": 28
+      },
+      "elementId": "17"
+    },
+    "r": {
+      "identity": 13,
+      "start": 17,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "13",
+      "startNodeElementId": "17",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "K.O. Inc."
+      },
+      "elementId": "1"
+    },
+    "r": {
+      "identity": 13,
+      "start": 17,
+      "end": 1,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "13",
+      "startNodeElementId": "17",
+      "endNodeElementId": "1"
+    }
+  },
+  {
+    "n": {
+      "identity": 4,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "CEO",
+        "email_account": " t.dfuriouso@tjab.com",
+        "surname": "Defurious",
+        "name": "Tyson",
+        "phone_number": "07435794812",
+        "age": 35
+      },
+      "elementId": "4"
+    },
+    "r": {
+      "identity": 14,
+      "start": 4,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "14",
+      "startNodeElementId": "4",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "Firm"
+      ],
+      "properties": {
+        "name": "TysonJab Ltd."
+      },
+      "elementId": "2"
+    },
+    "r": {
+      "identity": 14,
+      "start": 4,
+      "end": 2,
+      "type": "WORKS",
+      "properties": {
+
+      },
+      "elementId": "14",
+      "startNodeElementId": "4",
+      "endNodeElementId": "2"
+    }
+  },
+  {
+    "n": {
+      "identity": 3,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "CEO",
+        "email_account": "c.monzon@punchgear.com",
+        "surname": "Monzon",
+        "name": "Charlie",
+        "phone_number": "07337794873",
+        "age": 27
+      },
+      "elementId": "3"
+    },
+    "r": {
+      "identity": 15,
+      "start": 3,
+      "end": 6,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "15",
+      "startNodeElementId": "3",
+      "endNodeElementId": "6"
+    }
+  },
+  {
+    "n": {
+      "identity": 6,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "v.dalston@punchgear.com",
+        "surname": "Dalston",
+        "name": "Veronica",
+        "phone_number": "07475826107",
+        "age": 53
+      },
+      "elementId": "6"
+    },
+    "r": {
+      "identity": 15,
+      "start": 3,
+      "end": 6,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "15",
+      "startNodeElementId": "3",
+      "endNodeElementId": "6"
+    }
+  },
+  {
+    "n": {
+      "identity": 6,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "v.dalston@punchgear.com",
+        "surname": "Dalston",
+        "name": "Veronica",
+        "phone_number": "07475826107",
+        "age": 53
+      },
+      "elementId": "6"
+    },
+    "r": {
+      "identity": 16,
+      "start": 6,
+      "end": 7,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "16",
+      "startNodeElementId": "6",
+      "endNodeElementId": "7"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "k.chong@punchgear.com",
+        "surname": "Chong",
+        "name": "Kim",
+        "phone_number": "07765243981",
+        "age": 28
+      },
+      "elementId": "7"
+    },
+    "r": {
+      "identity": 16,
+      "start": 6,
+      "end": 7,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "16",
+      "startNodeElementId": "6",
+      "endNodeElementId": "7"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "k.chong@punchgear.com",
+        "surname": "Chong",
+        "name": "Kim",
+        "phone_number": "07765243981",
+        "age": 28
+      },
+      "elementId": "7"
+    },
+    "r": {
+      "identity": 17,
+      "start": 7,
+      "end": 8,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "17",
+      "startNodeElementId": "7",
+      "endNodeElementId": "8"
+    }
+  },
+  {
+    "n": {
+      "identity": 8,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "lbax@punchgear.com",
+        "surname": "Bax",
+        "name": "Lucas",
+        "phone_number": "07765243981",
+        "age": 22
+      },
+      "elementId": "8"
+    },
+    "r": {
+      "identity": 17,
+      "start": 7,
+      "end": 8,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "17",
+      "startNodeElementId": "7",
+      "endNodeElementId": "8"
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "k.chong@punchgear.com",
+        "surname": "Chong",
+        "name": "Kim",
+        "phone_number": "07765243981",
+        "age": 28
+      },
+      "elementId": "7"
+    },
+    "r": {
+      "identity": 18,
+      "start": 7,
+      "end": 9,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "18",
+      "startNodeElementId": "7",
+      "endNodeElementId": "9"
+    }
+  },
+  {
+    "n": {
+      "identity": 9,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "clight@punchgear.com",
+        "surname": "Light",
+        "name": "Christian",
+        "phone_number": "07841509627",
+        "age": 42
+      },
+      "elementId": "9"
+    },
+    "r": {
+      "identity": 18,
+      "start": 7,
+      "end": 9,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "18",
+      "startNodeElementId": "7",
+      "endNodeElementId": "9"
+    }
+  },
+  {
+    "n": {
+      "identity": 5,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "CEO",
+        "email_account": " t.josher@ko.com",
+        "surname": "Josher",
+        "name": "Tony",
+        "phone_number": "07410928574",
+        "age": 32
+      },
+      "elementId": "5"
+    },
+    "r": {
+      "identity": 19,
+      "start": 5,
+      "end": 14,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "19",
+      "startNodeElementId": "5",
+      "endNodeElementId": "14"
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "a.reed@ko.com",
+        "surname": "Reed",
+        "name": "Apollo",
+        "phone_number": "07620418975",
+        "age": 44
+      },
+      "elementId": "14"
+    },
+    "r": {
+      "identity": 19,
+      "start": 5,
+      "end": 14,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "19",
+      "startNodeElementId": "5",
+      "endNodeElementId": "14"
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "a.reed@ko.com",
+        "surname": "Reed",
+        "name": "Apollo",
+        "phone_number": "07620418975",
+        "age": 44
+      },
+      "elementId": "14"
+    },
+    "r": {
+      "identity": 20,
+      "start": 14,
+      "end": 15,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "20",
+      "startNodeElementId": "14",
+      "endNodeElementId": "15"
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "i.drako@ko.com",
+        "surname": "Drako",
+        "name": "Ivana",
+        "phone_number": "07093657142",
+        "age": 32
+      },
+      "elementId": "15"
+    },
+    "r": {
+      "identity": 20,
+      "start": 14,
+      "end": 15,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "20",
+      "startNodeElementId": "14",
+      "endNodeElementId": "15"
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "i.drako@ko.com",
+        "surname": "Drako",
+        "name": "Ivana",
+        "phone_number": "07093657142",
+        "age": 32
+      },
+      "elementId": "15"
+    },
+    "r": {
+      "identity": 21,
+      "start": 15,
+      "end": 16,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "21",
+      "startNodeElementId": "15",
+      "endNodeElementId": "16"
+    }
+  },
+  {
+    "n": {
+      "identity": 16,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "c.alves@ko.com",
+        "surname": "Alves",
+        "name": "Canela",
+        "phone_number": "07153829476",
+        "age": 29
+      },
+      "elementId": "16"
+    },
+    "r": {
+      "identity": 21,
+      "start": 15,
+      "end": 16,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "21",
+      "startNodeElementId": "15",
+      "endNodeElementId": "16"
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "i.drako@ko.com",
+        "surname": "Drako",
+        "name": "Ivana",
+        "phone_number": "07093657142",
+        "age": 32
+      },
+      "elementId": "15"
+    },
+    "r": {
+      "identity": 22,
+      "start": 15,
+      "end": 17,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "22",
+      "startNodeElementId": "15",
+      "endNodeElementId": "17"
+    }
+  },
+  {
+    "n": {
+      "identity": 17,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "r.balbota@ko.com",
+        "surname": "Balbota",
+        "name": "Ronnie",
+        "phone_number": "07684290375",
+        "age": 28
+      },
+      "elementId": "17"
+    },
+    "r": {
+      "identity": 22,
+      "start": 15,
+      "end": 17,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "22",
+      "startNodeElementId": "15",
+      "endNodeElementId": "17"
+    }
+  },
+  {
+    "n": {
+      "identity": 4,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "CEO",
+        "email_account": " t.dfuriouso@tjab.com",
+        "surname": "Defurious",
+        "name": "Tyson",
+        "phone_number": "07435794812",
+        "age": 35
+      },
+      "elementId": "4"
+    },
+    "r": {
+      "identity": 23,
+      "start": 4,
+      "end": 10,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "23",
+      "startNodeElementId": "4",
+      "endNodeElementId": "10"
+    }
+  },
+  {
+    "n": {
+      "identity": 10,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "r.martino@tjab.com",
+        "surname": "Martino",
+        "name": "Ricky",
+        "phone_number": "07065498216",
+        "age": 67
+      },
+      "elementId": "10"
+    },
+    "r": {
+      "identity": 23,
+      "start": 4,
+      "end": 10,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "23",
+      "startNodeElementId": "4",
+      "endNodeElementId": "10"
+    }
+  },
+  {
+    "n": {
+      "identity": 10,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "VPSales",
+        "email_account": "r.martino@tjab.com",
+        "surname": "Martino",
+        "name": "Ricky",
+        "phone_number": "07065498216",
+        "age": 67
+      },
+      "elementId": "10"
+    },
+    "r": {
+      "identity": 25,
+      "start": 10,
+      "end": 11,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "25",
+      "startNodeElementId": "10",
+      "endNodeElementId": "11"
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "l.levy@tjab.com",
+        "surname": "Levy",
+        "name": "Lena",
+        "phone_number": "07682103459",
+        "age": 54
+      },
+      "elementId": "11"
+    },
+    "r": {
+      "identity": 25,
+      "start": 10,
+      "end": 11,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "25",
+      "startNodeElementId": "10",
+      "endNodeElementId": "11"
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "l.levy@tjab.com",
+        "surname": "Levy",
+        "name": "Lena",
+        "phone_number": "07682103459",
+        "age": 54
+      },
+      "elementId": "11"
+    },
+    "r": {
+      "identity": 26,
+      "start": 11,
+      "end": 12,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "26",
+      "startNodeElementId": "11",
+      "endNodeElementId": "12"
+    }
+  },
+  {
+    "n": {
+      "identity": 12,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "g.foreguy@tjab.com",
+        "surname": "Foreguy",
+        "name": "Georgie",
+        "phone_number": "07263948105",
+        "age": 34
+      },
+      "elementId": "12"
+    },
+    "r": {
+      "identity": 26,
+      "start": 11,
+      "end": 12,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "26",
+      "startNodeElementId": "11",
+      "endNodeElementId": "12"
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "ZoneManager",
+        "email_account": "l.levy@tjab.com",
+        "surname": "Levy",
+        "name": "Lena",
+        "phone_number": "07682103459",
+        "age": 54
+      },
+      "elementId": "11"
+    },
+    "r": {
+      "identity": 27,
+      "start": 11,
+      "end": 13,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "27",
+      "startNodeElementId": "11",
+      "endNodeElementId": "13"
+    }
+  },
+  {
+    "n": {
+      "identity": 13,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "role": "SalesAgent",
+        "email_account": "f.juneclimatey@tjab.com",
+        "surname": "Juneclimate",
+        "name": "Floyd",
+        "phone_number": "07921587064",
+        "age": 28
+      },
+      "elementId": "13"
+    },
+    "r": {
+      "identity": 27,
+      "start": 11,
+      "end": 13,
+      "type": "MANAGES",
+      "properties": {
+
+      },
+      "elementId": "27",
+      "startNodeElementId": "11",
+      "endNodeElementId": "13"
+    }
+  }
+]
