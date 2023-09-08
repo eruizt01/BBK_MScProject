@@ -1,5 +1,9 @@
 package mscproject.cartelapp;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import mscproject.cartelapp.entity.Call;
 import mscproject.cartelapp.entity.Person;
 import mscproject.cartelapp.entity.Product;
@@ -23,8 +27,8 @@ import mscproject.cartelapp.repository.PersonRepository;
 
 @SpringBootApplication
 @EnableNeo4jRepositories("mscproject.cartelapp.repository")
-@ComponentScan("mscproject.cartelapp")
-@EntityScan ("mscproject.cartelapp.entity")
+@ComponentScan({"mscproject.cartelapp", "mscproject.cartelapp.controller"})
+@EntityScan("mscproject.cartelapp.entity")
 public class CartelAppApplication implements CommandLineRunner {
 
     @Autowired
@@ -73,21 +77,36 @@ public class CartelAppApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        //Print all Firms
-        //firmService.printFirms();
+        // Print all Firms
+        // firmService.printFirms();
 
-        //Print all persons Sorted by name
-        //personService.printAllPersonsSortedByName();
+        // Print all persons Sorted by name
+        // personService.printAllPersonsSortedByName();
 
-        //Create a person
-        //personService.createPerson();
+        // Create a person
+        // personService.createPerson();
 
-        //Create Products from an Excel file
-        //productService.createProduct();
+        // Create Products from an Excel file
+        // productService.createProduct();
 
-        //Delete a person
-        //personService.deletePerson();
+        // Delete a person
+        // personService.deletePerson();
 
+        // Keep the application running until user input
+        // Display message about web server URL
+        System.out.println("Navigate to http://localhost:8080 to access the application.");
 
+        // Optionally, open the default web browser to go to the application
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI("http://localhost:8080"));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Keep the application running until user input
+        System.out.println("Press Enter to exit...");
+        System.in.read(); // Wait for user input (Enter key)
     }
 }

@@ -31,27 +31,10 @@ public class PersonService {
     }
 
     // Deletes a person
-
-    public void deletePerson() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter the name of the person to delete: ");
-            String name = scanner.nextLine().trim(); // Remove leading/trailing spaces
-            if (!name.isEmpty()) {
-                Person personToDelete = personRepository.findByName(name);
-                if (personToDelete != null) {
-                    personRepository.delete(personToDelete);
-                    System.out.println("Person deleted.");
-                } else {
-                    System.out.println("Person not found.");
-                }
-            } else {
-                System.out.println("Invalid input.");
-            }
-        } catch (Exception e) {
-            // Handle exceptions (e.g., input/output or database errors)
-            System.out.println("An error occurred: " + e.getMessage());
-        }
+    public void deletePerson(Long id) {
+        personRepository.deleteById(id);
     }
+
 
 
     /**
