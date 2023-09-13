@@ -78,7 +78,7 @@ public class CartelAppApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         // Print all Firms
-        // firmService.printFirms();
+        //firmService.printFirms();
 
         // Print all persons Sorted by name
         // personService.printAllPersonsSortedByName();
@@ -94,12 +94,12 @@ public class CartelAppApplication implements CommandLineRunner {
 
         // Keep the application running until user input
         // Display message about web server URL
-        System.out.println("Navigate to http://localhost:8080 to access the application.");
+        System.out.println("Navigate to http://localhost:8080/cartelApp/showPersonForm to access the application.");
 
         // Optionally, open the default web browser to go to the application
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
-                Desktop.getDesktop().browse(new URI("http://localhost:8080"));
+                Desktop.getDesktop().browse(new URI("http://localhost:8080/cartelApp/showPersonForm"));
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }

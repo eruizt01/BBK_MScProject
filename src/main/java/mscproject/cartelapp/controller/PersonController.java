@@ -2,57 +2,54 @@ package mscproject.cartelapp.controller;
 
 import mscproject.cartelapp.entity.Person;
 import mscproject.cartelapp.repository.PersonRepository;
-import mscproject.cartelapp.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/cartelApp")
 public class PersonController {
 
+    //Add logging to the class
+    private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
     private final PersonRepository personRepository;
-    @Autowired
-    private PersonService personService;
 
     @Autowired
     public PersonController(PersonRepository personRepository) {
         this.personRepository = personRepository;
-        System.out.println("Controller Initialized");
     }
 
-    // Updated method
+    // Mapping to display the "Create New Person" form
     @GetMapping("/showPersonForm")
     public String showPersonForm(Model model) {
+        logger.info("showPersonForm method invoked");
         model.addAttribute("person", new Person());
-        model.addAttribute("allPersons", personRepository.findAll());  // Add this line to list all persons
-        return "cartelAppForm"; //
+        model.addAttribute("allPersons", personRepository.findAll());
+        return "cartelApp";
     }
 
-
-    // Handle form submission
+    // Mapping to handle form submission and create a new Person
     @PostMapping("/createPerson")
-    public String createPerson(@ModelAttribute Person person) {
-        Person savedPerson = personRepository.save(person);
+    public String createPerson(@ModelAttribute("person") Person person) {
+        logger.info("createPerson method invoked with data: {}", person);
+        personRepository.save(person);
         return "redirect:/cartelApp/showPersonForm";
     }
 
-
+    // Mapping to delete a Person by ID
     @GetMapping("/deletePerson/{id}")
-    public String deletePerson(@PathVariable Long id) {
-        personService.deletePerson(id);
+    public String deletePerson(@PathVariable("id") Long id) {
+        logger.info("deletePerson method invoked for id: {}", id);
+        personRepository.deleteById(id);
         return "redirect:/cartelApp/showPersonForm";
     }
-
-    // In case we want an API endpoint to list all persons
-    @GetMapping("/api/all")
-    public List<Person> getAllPersons() {
-        return personRepository.findAll();
-    }
-
-
 }

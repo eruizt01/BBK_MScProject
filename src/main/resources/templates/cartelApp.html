@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Application For Cartel Investigations</title>
+</head>
+<body>
+
+<h1>Create New Person</h1>
+
+<form action="#" th:action="@{/cartelApp/createPerson}" th:object="${person}" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" />
+    </div>
+    <div>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" th:field="*{surname}" />
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" th:field="*{age}" />
+    </div>
+    <div>
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" th:field="*{role}" />
+    </div>
+    <div>
+        <label for="email_account">Email:</label>
+        <input type="email" id="email_account" name="email_account" th:field="*{email_account}" />
+    </div>
+    <div>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" th:field="*{phone_number}" />
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<h2>All Persons</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through all persons and display -->
+    <tr th:each="person : ${allPersons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.age}"></td>
+        <td>
+            <!-- Delete button -->
+            <a th:href="@{/cartelApp/deletePerson/{id}(id=${person.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
