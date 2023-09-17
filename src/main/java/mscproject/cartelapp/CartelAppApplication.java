@@ -9,6 +9,7 @@ import mscproject.cartelapp.entity.Person;
 import mscproject.cartelapp.entity.Product;
 import mscproject.cartelapp.repository.CallRepository;
 import mscproject.cartelapp.repository.ProductRepository;
+import mscproject.cartelapp.service.EmailService;
 import mscproject.cartelapp.service.FirmService;
 import mscproject.cartelapp.service.PersonService;
 import mscproject.cartelapp.service.ProductService;
@@ -94,17 +95,17 @@ public class CartelAppApplication implements CommandLineRunner {
 
         // Keep the application running until user input
         // Display message about web server URL
-        System.out.println("Navigate to http://localhost:8080/cartelApp/showPersonForm to access the application.");
+        System.out.println("Navigate to http://localhost:8080 to access the application.");
 
         // Optionally, open the default web browser to go to the application
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
-                Desktop.getDesktop().browse(new URI("http://localhost:8080/cartelApp/showPersonForm"));
+                Desktop.getDesktop().browse(new URI("http://localhost:8080"));
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
         }
-
+        System.out.println(); // Or log this information
         // Keep the application running until user input
         System.out.println("Press Enter to exit...");
         System.in.read(); // Wait for user input (Enter key)

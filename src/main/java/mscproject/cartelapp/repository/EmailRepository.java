@@ -1,5 +1,8 @@
 package mscproject.cartelapp.repository;
 
+import mscproject.cartelapp.DTO.EmailDTO;
+import mscproject.cartelapp.DTO.InteractionsDTO;
+import mscproject.cartelapp.DTO.PageRankDTO;
 import mscproject.cartelapp.entity.Email;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
@@ -11,12 +14,16 @@ import java.util.Map;
 @Repository
 public interface EmailRepository extends Neo4jRepository<Email, Long> {
 
-    @Query("MATCH (p:Person)-[r:SENT]->(:Email) RETURN p.name as name, SUM(r.Weight) AS totalWeight ORDER BY totalWeight DESC LIMIT 1")
-    Map<String, Object> findPersonWithMostSentEmails();
+    @Query("MATCH (p:Person)-[r:SENT]->(:Email) RETURN p.name as name, COUNT(r) AS numberOfEmailsSent, SUM(r.Weight) AS totalWeight ORDER BY numberOfEmailsSent DESC LIMIT 10")
+    List<EmailDTO> findTop10SentEmails();
 
-    @Query("MATCH (p:Person)<-[r:RECEIVED]-(:Email) RETURN p.name as name, SUM(r.Weight) AS totalWeight ORDER BY totalWeight DESC LIMIT 1")
-    Map<String, Object> findPersonWithMostReceivedEmails();
+    @Query("MATCH (p:Person)-[r:RECEIVED]->(:Email) RETURN p.name as name, COUNT(r) AS numberOfEmailsReceived, SUM(r.Weight) AS totalWeight ORDER BY numberOfEmailsReceived DESC LIMIT 10")
+    List<EmailDTO> findTop10ReceivedEmails();
 
-    @Query("MATCH (p1:Person)-[r:SENT|RECEIVED]-(p2:Person) WHERE id(p1) < id(p2)  RETURN p1.name as person1, p2.name as person2, SUM(r.Weight) AS totalWeight ORDER BY totalWeight DESC LIMIT 10")
-    List<Map<String, Object>> findTopEmailInteractions();
+    @Query("MATCH (p1:Person)-[s:SENT]->(e:Email)<-[r:RECEIVED]-(p2:Person) WHERE id(p1) < id(p2)  RETURN p1.name as person1, p2.name as person2, SUM(r.Weight) AS totalWeight ORDER BY totalWeight DESC LIMIT 10")
+    List<InteractionsDTO> findTopEmailInteractions();
+
+    //Page Rank
+    @Query("MATCH (p:Person) RETURN p.name AS name, p.pageRank AS pageRank ORDER BY p.pageRank DESC LIMIT 5")
+    List<PageRankDTO> findTop5PageRankedPersons();
 }
