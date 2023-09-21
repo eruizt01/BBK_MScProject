@@ -114,6 +114,16 @@
     </div>
 </div>
 
+<!-- Betweeness Centrality -->
+<div style="margin-bottom: 20px;">
+    <span>Find the top 5 Betweenness Centrality persons:</span>
+    <a href="/top5BetCenPersons" style="margin-left: 10px;">
+        <button>FIND</button>
+    </a>
+</div>
+</div>
+
+
 
 <!-- Display results -->
 <div>
@@ -226,6 +236,32 @@
     </table>
 </div>
 
+<!-- Display Betweenness Centrality results -->
+<div th:if="${top5BetCenPersons != null}">
+    <h4>Top 5 Persons by Betweenness Centrality</h4>
+    <table border="1" style="width:70%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Person</th>
+            <th style="padding: 8px; text-align: left;">Betweenness Centrality</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${top5BetCenPersons}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${person.name}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${person.betweennessCentrality}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="width:70%; padding: 10px; border: 1px solid #ccc; margin-top: 10px;">
+        <strong>Note:</strong> "Betweenness Centrality" quantifies the influence or 'brokerage' role of each Person in the communication network.
+    </div>
+</div>
+
 <!-- Display PageRank results -->
 <div th:if="${top5PageRankedPersons != null}">
     <h4>Top 5 Persons by PageRank</h4>
@@ -250,9 +286,9 @@
     <div style="width:70%; padding: 10px; border: 1px solid #ccc; margin-top: 10px;">
         <strong>Note:</strong> "PageRank" measures the importance of each Person based on the weight (value) of incoming/outgoing interactions from other persons in the database.
     </div>
-</div>
 
 </div>
+
 
 </body>
 </html>

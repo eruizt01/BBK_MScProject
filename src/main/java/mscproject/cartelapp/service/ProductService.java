@@ -7,14 +7,16 @@ import org.neo4j.driver.Driver;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Iterator;
 
 import static org.neo4j.driver.Values.parameters;
-
 
 @Service
 public class ProductService {
@@ -27,36 +29,44 @@ public class ProductService {
         this.neo4jDriver = neo4jDriver;
     }
 
-    public void createProduct() {
+    public void createProduct(MultipartFile file) {
         try {
-            FileInputStream file = new FileInputStream("/Users/ERT/Desktop/ProductBook.xlsx");
-            Workbook workbook = new XSSFWorkbook(file);
-            Sheet sheet = workbook.getSheetAt(0);
+            // Save the uploaded file to a temporary location
+            File tempFile = new File("temp.xlsx"); // You should put this in a configurable path
+            try (FileOutputStream fos = new FileOutputStream(tempFile)) {
+                fos.write(file.getBytes());
+            }
 
-            // Create a session using the Neo4j driver.
-            try (Session session = neo4jDriver.session()) {
-                // Skip the header row (assuming it's the first row)
-                Iterator<Row> rowIterator = sheet.iterator();
-                if (rowIterator.hasNext()) {
-                    rowIterator.next(); // Skip the first row (header)
-                }
+            // Now read the file from the saved location
+            try (InputStream inputStream = new FileInputStream(tempFile);
+                 Workbook workbook = new XSSFWorkbook(inputStream)) {
+                Sheet sheet = workbook.getSheetAt(0);
 
-                while (rowIterator.hasNext()) {
-                    Row row = rowIterator.next();
-                    String name = getStringValue(row.getCell(0));
-                    String category = getStringValue(row.getCell(1));
-                    String sku = getStringValue(row.getCell(2));
+                // Create a session using the Neo4j driver
+                try (Session session = neo4jDriver.session()) {
+                    Iterator<Row> rowIterator = sheet.iterator();
+                    if (rowIterator.hasNext()) {
+                        rowIterator.next(); // Skip header row
+                    }
 
-                    // Use a transaction to create the node for each row of data.
-                    try (Transaction tx = session.beginTransaction()) {
-                        tx.run("CREATE (p:Product {name: $name, category: $category, sku: $sku})",
-                                parameters("name", name, "category", category, "sku", sku));
-                        tx.commit();
+                    while (rowIterator.hasNext()) {
+                        Row row = rowIterator.next();
+                        String name = getStringValue(row.getCell(0));
+                        String category = getStringValue(row.getCell(1));
+                        String SKU = getStringValue(row.getCell(2));
+
+                        try (Transaction tx = session.beginTransaction()) {
+                            tx.run("CREATE (p:Product {name: $name, category: $category, sku: $sku})",
+                                    parameters("name", name, "category", category, "SKU", SKU));
+                            tx.commit();
+                        }
                     }
                 }
             }
+            // Optionally, delete the temporary file if you wish
+            // tempFile.delete();
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Consider using logging
         }
     }
 

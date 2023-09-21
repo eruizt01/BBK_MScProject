@@ -1,20 +1,19 @@
 package mscproject.cartelapp.controller;
 
-import mscproject.cartelapp.DTO.EmailDTO;
-import mscproject.cartelapp.DTO.PageRankDTO;
-import mscproject.cartelapp.DTO.MessageDTO;
-import mscproject.cartelapp.DTO.InteractionsDTO;
+import mscproject.cartelapp.DTO.*;
 import mscproject.cartelapp.entity.Person;
 import mscproject.cartelapp.repository.EmailRepository;
 import mscproject.cartelapp.repository.MessageRepository;
 import mscproject.cartelapp.repository.PersonRepository;
 import mscproject.cartelapp.service.EmailService;
 import mscproject.cartelapp.service.MessageService;
+import mscproject.cartelapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -39,6 +38,9 @@ public class Controller {
 
     @Autowired
     private MessageRepository  messageRepository;
+
+    @Autowired
+    private ProductService productService;
 
     @Autowired
     public Controller(PersonRepository personRepository, EmailRepository emailRepository, MessageRepository  messageRepository) {
@@ -107,6 +109,15 @@ public class Controller {
         return "cartelApp";
     }
 
+    @GetMapping("/top5BetCenPersons")
+    public String getTop5BetCenPersons(Model model) {
+        List<BetCenDTO> top5BetCenPersons = emailService.getTop5BetCenPersons();
+        // Debugging line to print the list contents to the console
+        System.out.println(top5BetCenPersons);
+        model.addAttribute("top5BetCenPersons", top5BetCenPersons);
+        model.addAttribute("person", new Person());
+        return "cartelApp";
+    }
 
     @GetMapping("/mostSentMessages")
     public String getPersonWithMostSentMessages(Model model) {
@@ -124,7 +135,8 @@ public class Controller {
         return "cartelApp";
     }
 
-
-
 }
+
+
+
 

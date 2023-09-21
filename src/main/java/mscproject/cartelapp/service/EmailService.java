@@ -1,5 +1,6 @@
 package mscproject.cartelapp.service;
 
+import mscproject.cartelapp.DTO.BetCenDTO;
 import mscproject.cartelapp.DTO.EmailDTO;
 import mscproject.cartelapp.DTO.InteractionsDTO;
 import mscproject.cartelapp.DTO.PageRankDTO;
@@ -43,6 +44,10 @@ public class EmailService {
 
     public List<PageRankDTO> getTop5PageRankedPersons() {
         return emailRepository.findTop5PageRankedPersons();
+    }
+
+    public List<BetCenDTO> getTop5BetCenPersons() {
+        return emailRepository.findTop5BetCenPersons();
     }
 
 }
