@@ -6,15 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
- *
+ *  Service class for the Person Repository.
+ * @author eruizt01
  */
 
 @Service
 public class PersonService {
     private final PersonRepository personRepository;
+
+    /**
+     * Constructor for PersonService
+     * @param personRepository
+     */
 
     @Autowired
     public PersonService(PersonRepository personRepository) {
@@ -22,7 +29,9 @@ public class PersonService {
     }
 
     /**
-     * Creates a person
+     * Creates a person with predefined values
+     * @return Person
+     * (this method is not implemented in the view)
      */
     public void createPerson() {
         Person person = new Person("Sebastian", "Bach", 33,
@@ -30,29 +39,34 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    // Deletes a person
-    public void deletePerson(Long id) {
-        personRepository.deleteById(id);
-    }
-
 
 
     /**
-     * Print all persons sorted by name
+     * find all Person nodes in the database
+     * @return a List of Person nodes
      */
 
-    public void printAllPersonsSortedByName() {
-        // Define a sort order by name in ascending order
-        Sort sort = Sort.by(Sort.Order.asc("name"));
-
-        // Retrieve all persons from the repository and sort them
-        Iterable<Person> sortedPersons = personRepository.findAll(sort);
-
-        // Print the sorted persons
-        for (Person person : sortedPersons) {
-            System.out.println(person.getName());
-        }
+    public List<Person> findAll() {
+        return personRepository.findAll();
     }
+
+    /**
+     * Save a person in the database
+     * @param person to be saved
+     */
+
+    public void save(Person person) {
+        personRepository.save(person);
+    }
+    /**
+     * delete a person by id
+     * @param id of the person to delete
+     */
+
+    public void deleteById(Long id) {
+        personRepository.deleteById(id);
+    }
+
 
 
 }

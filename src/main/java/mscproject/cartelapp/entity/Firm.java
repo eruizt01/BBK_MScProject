@@ -20,12 +20,16 @@ import java.util.List;
     @Id @GeneratedValue
     private Long id;
 
-
-    //Default constructor
+    /**
+     * default Constructor
+     */
     public Firm() {
     }
 
-    // Constructor
+    /**
+     * Constructor
+     * @param firmName
+     */
     public Firm(String firmName){
         this.firmName = firmName;
     }

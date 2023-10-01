@@ -1,7 +1,11 @@
 
     package mscproject.cartelapp.DTO;
 
-    import java.util.List;
+    /**
+     * This class is a Data Transfer Object used to store and encapsulate data related to operations with
+     * the application of the pageRank algorithm.
+     *
+     */
 
     public class PageRankDTO {
 

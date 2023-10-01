@@ -18,6 +18,10 @@ import java.util.Iterator;
 
 import static org.neo4j.driver.Values.parameters;
 
+/**
+ *  Service class for the Message Repository.
+ * @author eruizt01
+ */
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
@@ -28,6 +32,13 @@ public class ProductService {
         this.productRepository = productRepository;
         this.neo4jDriver = neo4jDriver;
     }
+
+    /**
+     * Creates products in the database from a excel file.
+     * @param file - excel file with products
+     *              (name, category, SKU)
+     * This method is not actually implemented in the view
+     */
 
     public void createProduct(MultipartFile file) {
         try {

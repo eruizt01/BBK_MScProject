@@ -1,43 +1,28 @@
-package mscproject.cartelapp.entity;
+package mscproject.cartelapp.DTO;
 
-import org.springframework.data.neo4j.core.schema.*;
 
-import java.util.List;
 
 /**
- * Define Person nodes
- *  @Node annotation defines the class as a node ("Person")
- * Executives in the respective Firms
+ * This class is a Data Transfer Object used to store and encapsulate data related to operations with Person Nodes.
  *
  * @author eruizt01
  */
 
-    @Node (labels = {"Person"})
-    public class Person {
-
-    //Properties
-
-    @Property ("name")
+public class PersonDTO {
     private String name;
 
-    @Property ("surname")
     private String surname;
 
-    @Property ("age")
+
     private Integer age;
 
-    @Property ("role")
     private String role;
 
-    @Property ("email_account")
     private String email_account;
 
-    @Property ("phone_number")
     private String phone_number;
 
-    @Id @GeneratedValue
     private Long id;
-
 
 
     public String getName() {
@@ -88,35 +73,24 @@ import java.util.List;
         this.phone_number = phone_number;
     }
 
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-
-    //Default constructor
-    public Person() {
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    /**
-     * Constructor for Person
-     *
-     * @param name
-     * @param surName
-     * @param age
-     * @param role
-     * @param email_account
-     * @param phone_number
-     */
-    public Person (String name, String surName, Integer age, String role, String email_account, String phone_number) {
-        this.name = name;
-        this.surname = surName;
-        this.age = age;
-        this.role = role;
-        this.email_account = email_account;
-        this.phone_number = phone_number;
+    @Override
+    public String toString() {
+        return "PersonDTO{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                ", role='" + role + '\'' +
+                ", email_account='" + email_account + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", id=" + id +
+                '}';
     }
-
-
-
 }

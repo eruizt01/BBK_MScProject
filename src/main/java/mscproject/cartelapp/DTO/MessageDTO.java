@@ -1,5 +1,9 @@
 package mscproject.cartelapp.DTO;
 
+/**
+ * This class is a Data Transfer Object used to store and encapsulate data related to operations with Message Nodes.
+ * @author eruizt01
+ */
 public class MessageDTO {
 
     private String name;
@@ -9,6 +13,13 @@ public class MessageDTO {
 
     private Integer numberOfMessagesReceived;
 
+    /**
+     * Constructor for MessageDTO.
+     * @param name
+     * @param totalWeight
+     * @param numberOfMessagesSent
+     * @param numberOfMessagesReceived
+     */
     public MessageDTO(String name, Long totalWeight, Integer numberOfMessagesSent, Integer numberOfMessagesReceived) {
         this.name = name;
         this.totalWeight = totalWeight;
@@ -48,4 +59,10 @@ public class MessageDTO {
         this.numberOfMessagesReceived = numberOfMessagesReceived;
     }
 
+    @Override
+    public String toString() {
+        return "MessageDTO{" + "name=" + name + ", totalWeight=" + totalWeight + ", numberOfMessagesSent="
+                + numberOfMessagesSent + ", numberOfMessagesReceived=" + numberOfMessagesReceived + '}';
+
+    }
 }

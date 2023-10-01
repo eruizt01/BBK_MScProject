@@ -20,7 +20,7 @@
     </div>
     <div>
         <label for="age">Age:</label>
-        <input type="number" id="age" name="age" th:field="*{age}" />
+        <input type="number" id="age" name="age" th:field="*{age}" min="15" max="90" />
     </div>
     <div>
         <label for="role">Role:</label>
@@ -80,6 +80,14 @@
         </a>
     </div>
 
+    <div style="margin-bottom: 20px;">
+        <span>Find the pair of Persons with higher interactions (Emails SENT/RECEIVED):</span>
+        <a href="/topEmailInteractions" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+
 
     <h3>Message Queries</h3>
 
@@ -97,13 +105,23 @@
         </a>
     </div>
 
-    <h3>Interactions Combined (Messages/Emails)</h3>
     <div style="margin-bottom: 20px;">
-        <span>Find the pair of Persons with higher interactions (weight of emails SENT/RECEIVED):</span>
-        <a href="/topEmailInteractions" style="margin-left: 10px;">
+        <span>Find the pair of Persons with higher interactions (Messages SENT/RECEIVED):</span>
+        <a href="/topMessageInteractions" style="margin-left: 10px;">
             <button>FIND</button>
         </a>
     </div>
+
+    <h3>All Communications (Emails/Messages) </h3>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the pair of Persons with higher total interactions (Emails/Messages combined):</span>
+        <a href="/topCombinedInteractions" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+    <h3>Algorithm Queries</h3>
 
     <!-- PageRank -->
     <div style="margin-bottom: 20px;">
@@ -213,7 +231,7 @@
     </div>
 </div>
 
-<!-- Display top interactions by weight -->
+<!-- Display top email interactions by weight -->
 <div th:if="${topEmailInteractions != null}">
     <h4>Top Email Interactions by Weight</h4>
     <table border="1" style="width:100%; border-collapse: collapse;">
@@ -236,6 +254,54 @@
     </table>
 </div>
 
+<!-- Display top message interactions by weight -->
+<div th:if="${topMessageInteractions != null}">
+    <h4>Top Message Interactions by Weight</h4>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Interaction Between</th>
+            <th style="padding: 8px; text-align: left;">Total Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="interaction : ${topMessageInteractions}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.person1}"></span> and <span th:text="${interaction.person2}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.totalWeight}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Display top combined interactions, measured by weight -->
+<div th:if="${topCombinedInteractions != null}">
+    <h4>Top Combined Interactions by Weight</h4>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Interaction Between</th>
+            <th style="padding: 8px; text-align: left;">Total Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="interaction : ${topCombinedInteractions}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.person1}"></span> and <span th:text="${interaction.person2}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.totalWeight}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 <!-- Display Betweenness Centrality results -->
 <div th:if="${top5BetCenPersons != null}">
     <h4>Top 5 Persons by Betweenness Centrality</h4>
@@ -243,7 +309,7 @@
         <thead>
         <tr style="background-color: #f2f2f2;">
             <th style="padding: 8px; text-align: left;">Person</th>
-            <th style="padding: 8px; text-align: left;">Betweenness Centrality</th>
+            <th style="padding: 8px; text-align: left;">"Intermediary" or "Brokerage position" - Total Score</th>
         </tr>
         </thead>
         <tbody>
@@ -269,7 +335,7 @@
         <thead>
         <tr style="background-color: #f2f2f2;">
             <th style="padding: 8px; text-align: left;">Person</th>
-            <th style="padding: 8px; text-align: left;">PageRank</th>
+            <th style="padding: 8px; text-align: left;">Importance of ranked connections - Total Score</th>
         </tr>
         </thead>
         <tbody>
@@ -284,7 +350,7 @@
         </tbody>
     </table>
     <div style="width:70%; padding: 10px; border: 1px solid #ccc; margin-top: 10px;">
-        <strong>Note:</strong> "PageRank" measures the importance of each Person based on the weight (value) of incoming/outgoing interactions from other persons in the database.
+        <strong>Note:</strong> "PageRank" measures the importance of each Person's connections based on the weight (value) and rank of incoming/outgoing interactions.
     </div>
 
 </div>

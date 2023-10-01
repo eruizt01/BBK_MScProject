@@ -1,5 +1,9 @@
 package mscproject.cartelapp.DTO;
 
+/**
+ * This class is a Data Transfer Object used to store and encapsulate data related to operations with Email Nodes.
+ * @author eruizt01
+ */
 public class EmailDTO {
 
     private String name;
@@ -47,5 +51,12 @@ public class EmailDTO {
     public void setNumberOfEmailsReceived(Integer numberOfEmailsReceived) {
         this.numberOfEmailsReceived = numberOfEmailsReceived;
     }
-
+    @Override
+    public String toString() {
+        return "EmailDTO{" +
+                "name='" + name + '\'' +
+                ", totalWeight=" + totalWeight +
+                ", numberOfEmailsSent=" + numberOfEmailsSent +
+                ", numberOfEmailsReceived=" + numberOfEmailsReceived +'}';
+    }
 }

@@ -4,10 +4,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import mscproject.cartelapp.entity.Call;
-import mscproject.cartelapp.entity.Person;
-import mscproject.cartelapp.entity.Product;
-import mscproject.cartelapp.repository.CallRepository;
+
 import mscproject.cartelapp.repository.ProductRepository;
 import mscproject.cartelapp.service.EmailService;
 import mscproject.cartelapp.service.FirmService;
@@ -26,6 +23,18 @@ import mscproject.cartelapp.repository.FirmRepository;
 import mscproject.cartelapp.repository.PersonRepository;
 
 
+/**
+ * This class is the main entry point to the CartelApp
+ *
+ *  A Spring Boot application that is configured to integrate with a Neo4j
+ *  for data storage and retrieval related to a cartel investigation.
+ *  The application offers services related to CRUD operation relating to several entities..
+ *  Once it is run, the application provides guidance to access it via a web browser.
+ *
+ * @autor eruizt01
+ */
+
+
 @SpringBootApplication
 @EnableNeo4jRepositories("mscproject.cartelapp.repository")
 @ComponentScan({"mscproject.cartelapp", "mscproject.cartelapp.controller"})
@@ -37,17 +46,11 @@ public class CartelAppApplication implements CommandLineRunner {
 
     private final ConfigurableApplicationContext applicationContext;
 
-    private ProductService productService;
-    @Autowired
-    private FirmRepository firmRepository;
-    @Autowired
-    private PersonRepository personRepository;
+
 
     @Autowired
-    private CallRepository callRepository;
+    private EmailService emailService;
 
-    @Autowired
-    private ProductRepository productRepository;
 
     @Autowired
     private FirmService firmService;
@@ -55,17 +58,26 @@ public class CartelAppApplication implements CommandLineRunner {
     @Autowired
     private PersonService personService;
 
+    /**
+     * Constructor of the class CartelAppApplication
+     * @param driver
+     * @param applicationContext
+     * @param productService
+     * @param firmRepository
+     * @param personRepository
+     * @param productRepository
+     * @param emailService
+     * @param personService
+     * @param firmService
+     */
 
     public CartelAppApplication(Driver driver, ConfigurableApplicationContext applicationContext,
                                 ProductService productService, FirmRepository firmRepository,
-                                PersonRepository personRepository, ProductRepository productRepository, PersonService personService,
+                                PersonRepository personRepository, ProductRepository productRepository, EmailService emailService, PersonService personService,
                                 FirmService firmService) {
         this.driver = driver;
         this.applicationContext = applicationContext;
-        this.productService = productService;
-        this.firmRepository = firmRepository;
-        this.personRepository = personRepository;
-        this.productRepository = productRepository;
+        this.emailService = emailService;
         this.personService = personService;
         this.firmService = firmService;
     }
@@ -78,26 +90,9 @@ public class CartelAppApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // Print all Firms
-        //firmService.printFirms();
-
-        // Print all persons Sorted by name
-        // personService.printAllPersonsSortedByName();
-
-        // Create a person
-        // personService.createPerson();
-
-        // Create Products from an Excel file
-        // productService.createProduct();
-
-        // Delete a person
-        // personService.deletePerson();
-
-        // Keep the application running until user input
-        // Display message about web server URL
         System.out.println("Navigate to http://localhost:8080 to access the application.");
 
-        // Optionally, open the default web browser to go to the application
+        // Open the default web browser to go to the application
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
                 Desktop.getDesktop().browse(new URI("http://localhost:8080"));

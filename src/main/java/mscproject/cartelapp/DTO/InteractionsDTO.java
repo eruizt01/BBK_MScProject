@@ -1,5 +1,10 @@
 package mscproject.cartelapp.DTO;
 
+/**
+ * This class is a Data Transfer Object used to store and encapsulate data related to written communication interactions.
+ * Emails / Messages
+ * @author eruizt01
+ */
 public class InteractionsDTO {
 
     private String person1;
@@ -34,6 +39,11 @@ public class InteractionsDTO {
 
     public void setTotalWeight(Long totalWeight) {
         this.totalWeight = totalWeight;
+    }
+
+    @Override
+    public String toString() {
+        return "InteractionsDTO{" + "person1=" + person1 + ", person2=" + person2 + ", totalWeight=" + totalWeight + '}';
     }
 
 }

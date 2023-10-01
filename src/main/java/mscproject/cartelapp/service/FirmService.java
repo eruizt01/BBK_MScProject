@@ -5,10 +5,18 @@ import mscproject.cartelapp.entity.Firm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *  Service class for the Firm Repository.
+ * @author eruizt01
+ */
     @Service
     public class FirmService {
         private final FirmRepository firmRepository;
 
+    /**
+     * Constructor for FirmService
+     * @param firmRepository
+     */
         @Autowired
         public FirmService(FirmRepository firmRepository) {
             this.firmRepository = firmRepository;

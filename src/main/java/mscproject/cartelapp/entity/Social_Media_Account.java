@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * @Node annotation defines the class as a node ("Social_Media_Account")
  *
- *
  * @author eruizt01
  */
 
