@@ -1,0 +1,361 @@
+
+APPENDIX 3
+	
+Example Database Definition Queries
+
+
+**
+
+Note: This document aims to demonstrate part of the iterative process of graph-database definition embarked for the project.
+Not all this queries necessarily work or were used to define the actual version of the database presented in the Project.
+
+**
+
+
+1. Email Queries
+
+
+// Create Email nodes and relationships
+
+WITH ['meetings', 'pricing', 'agreement', 'other'] AS flags
+UNWIND range(1, 10) AS index
+WITH date(datetime({year: 2019, month: 1, day: 1})) AS mailDate, flags
+CREATE (e:Email {
+  date: mailDate,
+  time: time({hour: toInteger(rand() * 24), minute: toInteger(rand() * 60), second: toInteger(rand() * 60)}),
+  sender_address: 't.josher@ko.com',
+  receiver_address: 'a.reed@ko.com',
+  Weight: CASE flags[toInteger(rand() * size(flags))] WHEN 'agreement' THEN 5 ELSE toInteger(rand() * 5) + 1 END,
+  Flag: flags[toInteger(rand() * size(flags))],
+  link_to_content: 'https://ko.com/email/' + toInteger(rand() * 10000)
+})
+
+
+// Create Email node
+WITH ['meetings', 'pricing', 'agreement', 'other'] AS flags
+WITH date(datetime({year: 2020, month: 3, day: 12})) AS mailDate, flags
+CREATE (e:Email {
+  date: mailDate,
+  time: time({hour: toInteger(rand() * 24), minute: toInteger(rand() * 60), second: toInteger(rand() * 60)}),
+  sender_address: 't.josher@ko.com',
+  receiver_address: 'a.reed@ko.com',
+  Weight: CASE flags[toInteger(rand() * size(flags))] WHEN 'agreement' THEN 5 ELSE toInteger(rand() * 5) + 1 END,
+  Flag: flags[toInteger(rand() * size(flags))],
+  link_to_content: 'https://ko.com/email/' + toInteger(rand() * 10000)
+})
+WITH e
+
+// Create relationships
+MATCH (sender:Person {name: 'Tony'}), (receiver:Person {name: 'Apollo'})
+CREATE (sender)-[:SENT]->(e)-[:RECEIVED]->(receiver);
+
+
+
+Create 100 emails:
+
+// Define the list of flags
+WITH ['meetings', 'pricing', 'agreement', 'other'] AS flags
+
+// Create 100 emails with random dates
+UNWIND range(1, 100) AS index
+WITH flags, index,
+  datetime({
+    year: toInteger(rand() * 4) + 2019,
+    month: toInteger(rand() * 12) + 1,
+    day: toInteger(rand() * 31) + 1
+  }) AS mailDate
+CREATE (e:Email {
+  date: mailDate,
+  time: time({hour: toInteger(rand() * 24), minute: toInteger(rand() * 60), second: toInteger(rand() * 60)}),
+  sender_address: 't.josher@ko.com',
+  receiver_address: 'a.reed@ko.com',
+  Weight: CASE flags[toInteger(rand() * size(flags))] WHEN 'agreement' THEN 5 ELSE toInteger(rand() * 5) + 1 END,
+  Flag: flags[toInteger(rand() * size(flags))],
+  link_to_content: 'https://ko.com/email/' + toInteger(rand() * 10000)
+})
+WITH e
+
+// Create relationships
+MATCH (sender:Person {name: 'Tony'}), (receiver:Person {name: 'Apollo'})
+CREATE (sender)-[:SENT]->(e)<-[:RECEIVED]-(receiver);
+
+
+//Generate random number email between 2019 and 2022.
+
+// Generate a random number between 20 and 120
+WITH toInteger(20 + rand() * 101) AS randomEmailCount
+
+// Define the list of flags
+WITH ['meetings', 'pricing', 'agreement', 'other'] AS flags, randomEmailCount
+
+// Create randomEmailCount number of emails with random dates
+UNWIND range(1, randomEmailCount) AS index
+WITH flags, index,
+  datetime({
+    year: toInteger(rand() * 4) + 2019,
+    month: toInteger(rand() * 12) + 1,
+    day: toInteger(rand() * 31) + 1
+  }) AS mailDate
+CREATE (e:Email {
+  date: mailDate,
+  time: time({hour: toInteger(rand() * 24), minute: toInteger(rand() * 60), second: toInteger(rand() * 60)}),
+  sender_address: 'r.martino@tjab.com',
+  receiver_address: 'l.levy@tjab.com',
+  Weight: CASE flags[toInteger(rand() * size(flags))] WHEN 'agreement' THEN 5 ELSE toInteger(rand() * 5) + 1 END,
+  Flag: flags[toInteger(rand() * size(flags))],
+  link_to_content: 'https://tjab.com/email/' + toInteger(rand() * 10000)
+})
+WITH e
+
+// Create relationships
+MATCH (sender:Person {name: 'Ricky'}), (receiver:Person {name: 'Lena'})
+CREATE (sender)-[:SENT]->(e)<-[:RECEIVED]-(receiver);
+
+
+
+
+
+2. Message Queries
+
+
+
+//MSG nodes:
+(note: WhatsApp by default)
+
+// Create MSG nodes and relationships
+WITH ['meetings', 'pricing', 'agreement', 'other'] AS flags
+WITH flags
+UNWIND range(1, 50) AS index
+WITH flags, date({year: toInteger(rand() * 4) + 2019, month: toInteger(rand() * 12) + 1, day: toInteger(rand() * 31) + 1}) AS msgdate
+CREATE (e:Message {
+  date: msgdate,
+  time: apoc.date.format(apoc.date.parse(toInteger(rand() * 16) + 7 + ':' + toInteger(rand() * 60) + ':' + toInteger(rand() * 60), 's', 'HH:mm:ss'), 's', 'HH:mm:ss') + 'Z',
+  Weight: CASE flags[toInteger(rand() * size(flags))] WHEN 'agreement' THEN 5 ELSE toInteger(rand() * 5) + 1 END,
+  Flag: flags[toInteger(rand() * size(flags))],
+  platform: 'Whatsapp',
+  link_to_content: 'https://wa.me/<TonyJosher>/' + toInteger(rand() * 10000)
+})
+WITH e // Pass the created message node to the next part of the query
+MATCH (sender:Person {name: 'Tony'}), (receiver:Person {name: 'Apollo'})
+CREATE (sender)-[:SENT]->(e)<-[:RECEIVED]-(receiver);
+
+
+//Create messages :IN groupChat
+Random number of messages between 10 and 100
+
+// Create MSG nodes and relationships
+// Create MSG nodes and relationships
+WITH ['meetings', 'pricing', 'agreement', 'other'] AS flags
+WITH flags
+UNWIND range(1, 50) AS index
+WITH flags, date({year: toInteger(rand() * 4) + 2019, month: toInteger(rand() * 12) + 1, day: toInteger(rand() * 31) + 1}) AS msgdate
+CREATE (e:Message {
+  date: msgdate,
+  time: apoc.date.format(apoc.date.parse(toInteger(rand() * 16) + 7 + ':' + toInteger(rand() * 60) + ':' + toInteger(rand() * 60), 's', 'HH:mm:ss'), 's', 'HH:mm:ss') + 'Z',
+  Weight: CASE flags[toInteger(rand() * size(flags))] WHEN 'agreement' THEN 5 ELSE toInteger(rand() * 5) + 1 END,
+  Flag: flags[toInteger(rand() * size(flags))],
+  platform: 'Whatsapp',
+  link_to_content: 'https://wa.me/<TonyJosher>/' + toInteger(rand() * 10000)
+})
+WITH e // Pass the created message node to the next part of the query
+MATCH (sender:Person {name: 'Tony'}), (receiver:Person {name: 'Apollo'})
+CREATE (sender)-[:SENT]->(e)<-[:RECEIVED]-(receiver);
+
+
+
+//Message Generator
+
+// Generate a random number between 20 and 120
+WITH toInteger(20 + rand() * 101) AS randomMessageCount
+WITH ['meetings', 'pricing', 'agreement', 'other'] AS flags
+WITH flags
+UNWIND range(1, randomMessageCount) AS index
+WITH flags, date({year: toInteger(rand() * 4) + 2019, month: toInteger(rand() * 12) + 1, day: toInteger(rand() * 31) + 1}) AS msgdate
+CREATE (e:Message {
+  date: msgdate,
+  time: apoc.date.format(apoc.date.parse(toInteger(rand() * 16) + 7 + ':' + toInteger(rand() * 60) + ':' + toInteger(rand() * 60), 's', 'HH:mm:ss'), 's', 'HH:mm:ss') + 'Z',
+  Weight: CASE flags[toInteger(rand() * size(flags))] WHEN 'agreement' THEN 5 ELSE toInteger(rand() * 5) + 1 END,
+  Flag: flags[toInteger(rand() * size(flags))],
+  platform: 'Whatsapp',
+  link_to_content: 'https://wa.me/<TonyJosher>/' + toInteger(rand() * 10000)
+})
+WITH e // Pass the created message node to the next part of the query
+MATCH (sender:Person {name: 'Tony'}), (receiver:Person {name: 'Apollo'})
+
+
+
+
+Query existing Messages:
+
+MATCH (m:Message)
+WHERE (:Person {name: 'Apollo'})-[:SENT]->(m)
+AND (m)<-[:RECEIVED]-(:Person {name: 'Tony'})
+RETURN m;
+
+
+Count messages
+MATCH (m:Message)
+WHERE (:Person {name: 'Tony'})-[:SENT]->(m)
+AND (m)<-[:RECEIVED]-(:Person {name: 'Apollo'})
+RETURN COUNT(m) AS messageCount;
+
+
+
+
+
+3. "Call" Queries
+
+
+// Define the list of person names
+WITH ['Lena', 'Georgie', 'Floyd'] AS personNames
+
+// Create the Call nodes
+WITH personNames, ['phone line', 'whatsapp', 'skype'] AS mediums
+UNWIND range(1, 122) AS i
+WITH personNames, mediums[i % size(mediums)] AS medium, date(datetime({year: 2019, month: 1, day: 1}) + duration({days: toInteger(rand() * 1461)})) AS callDate
+CREATE (c:Call {
+  medium: medium,
+  date: callDate,
+  time: time({hour: toInteger(rand() * 24), minute: toInteger(rand() * 60), second: toInteger(rand() * 60)}),
+  duration: duration({minutes: toInteger(rand() * 60)})
+})
+SET c.flag = "external"
+
+// Select random Person nodes for RECEIVE_CALL and MADE_CALL
+WITH personNames, collect(c) AS calls
+
+UNWIND calls AS call
+
+WITH personNames, call,
+  personNames[toInteger(rand() * size(personNames))] AS receivePersonName,
+  personNames[toInteger(rand() * size(personNames))] AS madePersonName
+
+WHERE receivePersonName <> madePersonName // Exclude the same person
+
+MERGE (receive:Person {name: receivePersonName})
+MERGE (made:Person {name: madePersonName})
+
+CREATE (made)-[:MADE_CALL]->(call)<-[:RECEIVE_CALL]-(receive)
+
+
+
+
+
+4. Algorithm implementation 
+
+
+
+
+//Create weighted relationships between Person nodes to implement the algorithms
+
+MATCH (p1:Person)-[:SENT]->(e:Email)<-[:RECEIVED]-(p2:Person)
+MERGE (p1)-[r:EMAIL_EXCHANGE { weight: e.Weight }]->(p2)
+SET r.weight = e.Weight
+
+
+//PageRank 
+
+CALL gds.pageRank.write('my_weighted_graph', {
+    writeProperty: 'pageRank',
+    relationshipWeightProperty: 'weight'
+});
+
+
+CALL gds.graph.project(
+    'my_weighted_graph',
+    'Person',
+    {
+        EMAIL_EXCHANGE: {
+            type: 'EMAIL_EXCHANGE',
+            orientation: 'UNDIRECTED',
+            properties: 'weight'
+        }
+    }
+);
+
+
+
+
+//PROJECT THE MESSAGES into a named graph
+
+CALL gds.graph.project(
+    'my_MSG_WEIGHT_graph',
+    'Person',
+    {
+        EMAIL_EXCHANGE: {
+
+
+            type: 'MESSAGE_EXCHANGE',
+            orientation: 'UNDIRECTED',
+            properties: 'weight'
+        }
+    })
+
+
+
+
+//BC algorithm
+
+CALL gds.graph.project(
+  'BetCenAlgo',
+  'Email',
+  {
+    SENT: {
+      type: 'SENT',
+      orientation: 'NATURAL',
+      properties: 'Weight'
+    },
+    RECEIVED: {
+      type: 'RECEIVED',
+      orientation: 'NATURAL',
+      properties: 'Weight'
+    }
+  }
+)
+
+
+
+
+5. "Product" queries
+
+
+//This creates nodes for sales at different prices for each product
+//Product sales from 2020 to 2022
+
+MATCH (p:Product {SKU: '9475291e'})
+MATCH (f:Firm {name: "PunchGear Co."})
+UNWIND range(1, 300) AS index
+WITH date(datetime({year: toInteger(2019 + rand() * 4), month: toInteger(rand() * 12) + 1, day: toInteger(rand() * 30) + 1})) AS soldDate, p, f
+CREATE (p)-[:SOLD {
+  date_sold: soldDate,
+  sale_id: toInteger(rand() * 9000000000 + 1000000000),
+  quantity: toInteger(rand() * 3 + 1),
+  price_per_unit: CASE
+    WHEN soldDate >= date("2019-01-01") AND soldDate <= date("2020-04-30") THEN 30
+    WHEN soldDate >= date("2020-05-01") AND soldDate <= date("2022-01-01") THEN 40
+    ELSE 50
+  END
+}]->(f)
+
+
+
+MATCH (p:Product {SKU: 'f85e215c'})
+MATCH (f:Firm {name: "PunchGear Co."})
+UNWIND range(1, 100) AS index
+WITH date(datetime({year: toInteger(2019 + rand() * 2), month: toInteger(rand() * 12) + 1, day: toInteger(rand() * 30) + 1})) AS soldDate, p, f
+CREATE (p)-[:SOLD {
+  date_sold: soldDate,
+  sale_id: toInteger(rand() * 9000000000 + 1000000000),
+  quantity: toInteger(rand() * 3 + 1),
+  price_per_unit: 30
+}]->(f)
+
+
+
+
+// To query Sales
+
+MATCH (:Product{Category: 'Hand wraps'})-[s:SOLD]->(:Firm)
+WHERE date(s.date_sold) > date("2022-01-01")
+RETURN s
+
