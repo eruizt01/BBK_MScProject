@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AFCI</title>
+</head>
+<body>
+
+<h1>Welcome to the Application for Cartel Investigations - AFCI </h1>
+
+<h2> Create Person </h2>
+
+<form action="#" th:action="@{/createPerson}" th:object="${person}" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" />
+    </div>
+    <div>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" th:field="*{surname}" />
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" th:field="*{age}" min="15" max="90" />
+    </div>
+    <div>
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" th:field="*{role}" />
+    </div>
+    <div>
+        <label for="email_account">Email:</label>
+        <input type="email" id="email_account" name="email_account" th:field="*{email_account}" />
+    </div>
+    <div>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" th:field="*{phone_number}" />
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<h2>All Persons</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through all persons and display -->
+    <tr th:each="person : ${allPersons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.age}"></td>
+        <td>
+            <!-- Delete button -->
+            <a th:href="@{/deletePerson/{id}(id=${person.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <h3>Email Queries</h3>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the 10 persons that SENT the most number of emails:</span>
+        <a href="/mostSentEmails" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the 10 persons that RECEIVED the most number of emails:</span>
+        <a href="/mostReceivedEmails" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the pair of Persons with higher interactions (Emails SENT/RECEIVED):</span>
+        <a href="/topEmailInteractions" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+
+
+    <h3>Message Queries</h3>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the 10 persons that SENT the most number of messages:</span>
+        <a href="/mostSentMessages" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the 10 persons that RECEIVED the most number of messages:</span>
+        <a href="/mostReceivedMessages" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the pair of Persons with higher interactions (Messages SENT/RECEIVED):</span>
+        <a href="/topMessageInteractions" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+    <h3>All Communications (Emails/Messages) </h3>
+
+    <div style="margin-bottom: 20px;">
+        <span>Find the pair of Persons with higher total interactions (Emails/Messages combined):</span>
+        <a href="/topCombinedInteractions" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+
+    <h3>Algorithm Queries</h3>
+
+    <!-- PageRank -->
+    <div style="margin-bottom: 20px;">
+        <span>Find the top 5 PageRanked persons:</span>
+        <a href="/top5PageRankedPersons" style="margin-left: 10px;">
+            <button>FIND</button>
+        </a>
+    </div>
+</div>
+
+<!-- Betweeness Centrality -->
+<div style="margin-bottom: 20px;">
+    <span>Find the top 5 Betweenness Centrality persons:</span>
+    <a href="/top5BetCenPersons" style="margin-left: 10px;">
+        <button>FIND</button>
+    </a>
+</div>
+</div>
+
+
+
+<!-- Display results -->
+<div>
+    <h3>Query Results</h3>
+    <!-- Display properties for the 10 persons with the most sent emails -->
+    <div th:if="${mostSentEmails != null}">
+        <h4>People with Most Sent Emails</h4>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Sent Emails</th>
+                <th>Total Weight of Sent Emails</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${mostSentEmails}">
+                <td th:text="${person.name}">Placeholder for name</td>
+                <td th:text="${person.numberOfEmailsSent}">Placeholder for count of emails</td>
+                <td th:text="${person.totalWeight}">Placeholder for total weight</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Display properties for the 10 persons with the most received emails -->
+    <div th:if="${mostReceivedEmails != null}">
+        <h4>People with Most Received Emails</h4>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Received Emails</th>
+                <th>Total Weight of Received Emails</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${mostReceivedEmails}">
+                <td th:text="${person.name}">Placeholder for name</td>
+                <td th:text="${person.numberOfEmailsReceived}">Placeholder for count of emails</td>
+                <td th:text="${person.totalWeight}">Placeholder for total weight</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Display properties for the 10 persons with the most sent messages -->
+    <div th:if="${mostSentMessages != null}">
+        <h4>People with Most Sent Messages</h4>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Sent Messages</th>
+                <th>Total Weight of Sent Messages</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${mostSentMessages}">
+                <td th:text="${person.name}">Placeholder for name</td>
+                <td th:text="${person.numberOfMessagesSent}">Placeholder for count of messages</td>
+                <td th:text="${person.totalWeight}">Placeholder for total weight</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Display properties for the 10 persons with the most received messages -->
+    <div th:if="${mostReceivedMessages != null}">
+        <h4>People with Most Received Messages</h4>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Received Messages</th>
+                <th>Total Weight of Received Messages</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${mostReceivedMessages}">
+                <td th:text="${person.name}">Placeholder for name</td>
+                <td th:text="${person.numberOfMessagesReceived}">Placeholder for count of messages</td>
+                <td th:text="${person.totalWeight}">Placeholder for total weight</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Display top email interactions by weight -->
+<div th:if="${topEmailInteractions != null}">
+    <h4>Top Email Interactions by Weight</h4>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Interaction Between</th>
+            <th style="padding: 8px; text-align: left;">Total Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="interaction : ${topEmailInteractions}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.person1}"></span> and <span th:text="${interaction.person2}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.totalWeight}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Display top message interactions by weight -->
+<div th:if="${topMessageInteractions != null}">
+    <h4>Top Message Interactions by Weight</h4>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Interaction Between</th>
+            <th style="padding: 8px; text-align: left;">Total Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="interaction : ${topMessageInteractions}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.person1}"></span> and <span th:text="${interaction.person2}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.totalWeight}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Display top combined interactions, measured by weight -->
+<div th:if="${topCombinedInteractions != null}">
+    <h4>Top Combined Interactions by Weight</h4>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Interaction Between</th>
+            <th style="padding: 8px; text-align: left;">Total Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="interaction : ${topCombinedInteractions}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.person1}"></span> and <span th:text="${interaction.person2}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${interaction.totalWeight}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Display Betweenness Centrality results -->
+<div th:if="${top5BetCenPersons != null}">
+    <h4>Top 5 Persons by Betweenness Centrality</h4>
+    <table border="1" style="width:70%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Person</th>
+            <th style="padding: 8px; text-align: left;">"Intermediary" or "Brokerage position" - Total Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${top5BetCenPersons}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${person.name}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${person.betweennessCentrality}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="width:70%; padding: 10px; border: 1px solid #ccc; margin-top: 10px;">
+        <strong>Note:</strong> "Betweenness Centrality" quantifies the influence or 'brokerage' role of each Person in the communication network.
+    </div>
+</div>
+
+<!-- Display PageRank results -->
+<div th:if="${top5PageRankedPersons != null}">
+    <h4>Top 5 Persons by PageRank</h4>
+    <table border="1" style="width:70%; border-collapse: collapse;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; text-align: left;">Person</th>
+            <th style="padding: 8px; text-align: left;">Importance of ranked connections - Total Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${top5PageRankedPersons}">
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${person.name}"></span>
+            </td>
+            <td style="padding: 8px; text-align: left;">
+                <span th:text="${person.pageRank}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="width:70%; padding: 10px; border: 1px solid #ccc; margin-top: 10px;">
+        <strong>Note:</strong> "PageRank" measures the importance of each Person's connections based on the weight (value) and rank of incoming/outgoing interactions.
+    </div>
+
+</div>
+
+
+</body>
+</html>
