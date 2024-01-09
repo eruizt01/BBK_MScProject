@@ -1,6 +1,7 @@
 # BBK_MScProject - APPENDIX 2
 
-A Graph-Based Database Application for Cartel Investigations
+A Graph-Based Database Application for Cartel Investigations:
+
 This document contains a description of what the dummy database should contain, and several information about nodes, properties and relationships.
 
 ## * The Case *
